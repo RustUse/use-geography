@@ -1,0 +1,31 @@
+[package]
+name = "use-geography"
+description = "Composable geography primitives for RustUse"
+publish = true
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+documentation = "https://docs.rs/use-geography"
+keywords = ["geography", "coordinate", "map", "spatial-reference", "rustuse"]
+categories = ["data-structures", "science"]
+
+[dependencies]
+use-boundary.workspace = true
+use-elevation.workspace = true
+use-geo-coordinate.workspace = true
+use-geographic-region.workspace = true
+use-map-scale.workspace = true
+use-place.workspace = true
+use-projection.workspace = true
+use-spatial-reference.workspace = true
+
+[lints]
+workspace = true
+
+[package.metadata.docs.rs]
+all-features = true

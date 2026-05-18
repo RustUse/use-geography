@@ -1,0 +1,21 @@
+[package]
+name = "use-map-scale"
+description = "Primitive map scale vocabulary for RustUse"
+publish = true
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+rust-version.workspace = true
+documentation = "https://docs.rs/use-map-scale"
+keywords = ["map-scale", "scale", "resolution", "zoom", "rustuse"]
+categories = ["data-structures", "science"]
+
+[lints]
+workspace = true
+
+[package.metadata.docs.rs]
+all-features = true

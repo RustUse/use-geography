@@ -1,0 +1,53 @@
+[workspace]
+members = [
+    "crates/use-geography",
+    "crates/use-geo-coordinate",
+    "crates/use-place",
+    "crates/use-geographic-region",
+    "crates/use-boundary",
+    "crates/use-projection",
+    "crates/use-spatial-reference",
+    "crates/use-elevation",
+    "crates/use-map-scale",
+]
+resolver = "3"
+
+[workspace.package]
+authors = ["RustUse Contributors"]
+edition = "2024"
+homepage = "https://rustuse.org"
+license = "MIT OR Apache-2.0"
+publish = false
+readme = "README.md"
+repository = "https://github.com/RustUse/use-geography"
+rust-version = "1.95.0"
+version = "0.1.0"
+
+[workspace.dependencies]
+use-boundary = { version = "0.1.0", path = "crates/use-boundary" }
+use-elevation = { version = "0.1.0", path = "crates/use-elevation" }
+use-geo-coordinate = { version = "0.1.0", path = "crates/use-geo-coordinate" }
+use-geographic-region = { version = "0.1.0", path = "crates/use-geographic-region" }
+use-geography = { version = "0.1.0", path = "crates/use-geography" }
+use-map-scale = { version = "0.1.0", path = "crates/use-map-scale" }
+use-place = { version = "0.1.0", path = "crates/use-place" }
+use-projection = { version = "0.1.0", path = "crates/use-projection" }
+use-spatial-reference = { version = "0.1.0", path = "crates/use-spatial-reference" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.metadata.rustuse.release]
+publish = false
+versioning = "lockstep-0.x"
+first-publish-candidates = [
+    "use-geo-coordinate",
+    "use-place",
+    "use-geographic-region",
+    "use-boundary",
+    "use-projection",
+    "use-spatial-reference",
+    "use-elevation",
+    "use-map-scale",
+    "use-geography",
+]

@@ -1,0 +1,81 @@
+[workspace]
+release = false
+release_always = false
+changelog_update = false
+pr_labels = ["release"]
+max_analyze_commits = 2000
+
+[[package]]
+name = "use-geo-coordinate"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-place"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-geographic-region"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-boundary"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-projection"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-spatial-reference"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-elevation"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-map-scale"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
+name = "use-geography"
+release = true
+version_group = "rustuse-geography"
+changelog_update = true
+changelog_path = "./CHANGELOG.md"
+changelog_include = [
+    "use-geo-coordinate",
+    "use-place",
+    "use-geographic-region",
+    "use-boundary",
+    "use-projection",
+    "use-spatial-reference",
+    "use-elevation",
+    "use-map-scale",
+]
+
+[changelog]
+header = """# Changelog
+
+## Unreleased
+"""
+protect_breaking_commits = true
+sort_commits = "oldest"
+commit_parsers = [
+  { message = "^feat(?:\\([^)]+\\))?!?: .+", group = "Added" },
+  { message = "^fix(?:\\([^)]+\\))?!?: .+", group = "Fixed" },
+  { message = "^security(?:\\([^)]+\\))?!?: .+", group = "Security" },
+  { message = "^(?:refactor|perf|change)(?:\\([^)]+\\))?!?: .+", group = "Changed" },
+  { message = "^docs(?:\\([^)]+\\))?!?: .+", group = "Documentation" },
+  { message = "^(?:build|ci|chore|deps|test)(?:\\([^)]+\\))?!?: .+", group = "Tooling" },
+  { footer = "^changelog: ?ignore$", skip = true },
+  { message = "^.*", group = "Changed" },
+]
