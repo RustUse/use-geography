@@ -22,11 +22,11 @@ impl fmt::Display for GeoCoordinateError {
             Self::LatitudeNotFinite => formatter.write_str("latitude must be finite"),
             Self::LatitudeOutOfRange => {
                 formatter.write_str("latitude must be within -90.0..=90.0 degrees")
-            }
+            },
             Self::LongitudeNotFinite => formatter.write_str("longitude must be finite"),
             Self::LongitudeOutOfRange => {
                 formatter.write_str("longitude must be within -180.0..=180.0 degrees")
-            }
+            },
         }
     }
 }

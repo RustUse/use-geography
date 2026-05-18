@@ -18,7 +18,7 @@ impl fmt::Display for MapScaleError {
             Self::ResolutionNotFinite => formatter.write_str("map resolution must be finite"),
             Self::ResolutionNotPositive => {
                 formatter.write_str("map resolution must be greater than zero")
-            }
+            },
         }
     }
 }

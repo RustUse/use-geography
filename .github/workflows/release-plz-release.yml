@@ -1,6 +1,6 @@
 name: Release Publish Automation
 
-on:
+"on":
     push:
         branches:
             - main
@@ -27,7 +27,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             PUBLISHED_CRATES: >-
-                use-geo-coordinate use-place use-geographic-region use-boundary use-projection use-spatial-reference use-elevation use-map-scale use-geography
+              use-geo-coordinate use-place use-geographic-region use-boundary use-projection use-spatial-reference use-elevation use-map-scale use-geography
         steps:
             - name: Check out repository
               uses: actions/checkout@v4
@@ -45,7 +45,7 @@ jobs:
             - name: Confirm published crates already exist on crates.io
               run: |
                   for crate in $PUBLISHED_CRATES; do
-                    curl --fail --silent --show-error "https://crates.io/api/v1/crates/${crate}" > /dev/null
+                      curl --fail --silent --show-error "https://crates.io/api/v1/crates/${crate}" > /dev/null
                   done
 
             - name: Run release-plz release
