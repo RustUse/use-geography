@@ -39,7 +39,7 @@ mod tests {
         );
         assert_eq!(projection::ProjectionKind::Mercator.to_string(), "mercator");
         assert_eq!(epsg.to_string(), "EPSG:4326");
-        assert_eq!(height.meters(), 35.0);
+        assert!((height.meters() - 35.0).abs() < f64::EPSILON);
         assert_eq!(scale.to_string(), "1:10000");
         Ok(())
     }

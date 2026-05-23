@@ -5,7 +5,7 @@ members = [
     "crates/use-place",
     "crates/use-geographic-region",
     "crates/use-boundary",
-    "crates/use-projection",
+    "crates/use-geographical-projection",
     "crates/use-spatial-reference",
     "crates/use-elevation",
     "crates/use-map-scale",
@@ -31,7 +31,7 @@ use-geographic-region = { version = "0.1.0", path = "crates/use-geographic-regio
 use-geography = { version = "0.1.0", path = "crates/use-geography" }
 use-map-scale = { version = "0.1.0", path = "crates/use-map-scale" }
 use-place = { version = "0.1.0", path = "crates/use-place" }
-use-projection = { version = "0.1.0", path = "crates/use-projection" }
+use-projection = { package = "use-geographical-projection", version = "0.1.0", path = "crates/use-geographical-projection" }
 use-spatial-reference = { version = "0.1.0", path = "crates/use-spatial-reference" }
 
 [workspace.lints.rust]
@@ -45,7 +45,7 @@ first-publish-candidates = [
     "use-place",
     "use-geographic-region",
     "use-boundary",
-    "use-projection",
+    "use-geographical-projection",
     "use-spatial-reference",
     "use-elevation",
     "use-map-scale",

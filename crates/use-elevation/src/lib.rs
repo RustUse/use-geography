@@ -69,7 +69,12 @@ impl Error for VerticalReferenceTextError {}
 pub struct Elevation(f64);
 
 impl Elevation {
-    pub fn new(value: f64) -> Result<Self, ElevationValueError> {
+    /// Creates an elevation value in meters.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ElevationValueError::NonFinite`] when the value is not finite.
+    pub const fn new(value: f64) -> Result<Self, ElevationValueError> {
         if !value.is_finite() {
             return Err(ElevationValueError::NonFinite);
         }
@@ -78,7 +83,7 @@ impl Elevation {
     }
 
     #[must_use]
-    pub fn meters(self) -> f64 {
+    pub const fn meters(self) -> f64 {
         self.0
     }
 }
@@ -93,6 +98,12 @@ impl fmt::Display for Elevation {
 pub struct Depth(f64);
 
 impl Depth {
+    /// Creates a non-negative depth value in meters.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ElevationValueError::NonFinite`] when the value is not finite.
+    /// Returns [`ElevationValueError::NegativeDepth`] when the value is negative.
     pub fn new(value: f64) -> Result<Self, ElevationValueError> {
         if !value.is_finite() {
             return Err(ElevationValueError::NonFinite);
@@ -106,7 +117,7 @@ impl Depth {
     }
 
     #[must_use]
-    pub fn meters(self) -> f64 {
+    pub const fn meters(self) -> f64 {
         self.0
     }
 }
@@ -165,6 +176,11 @@ impl FromStr for ElevationDatum {
 pub struct VerticalReference(String);
 
 impl VerticalReference {
+    /// Creates a vertical reference label from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`VerticalReferenceTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, VerticalReferenceTextError> {
         non_empty_text(value).map(Self)
     }
@@ -208,7 +224,7 @@ mod tests {
     fn positive_elevation() -> Result<(), ElevationValueError> {
         let elevation = Elevation::new(8848.86)?;
 
-        assert_eq!(elevation.meters(), 8848.86);
+        assert!((elevation.meters() - 8848.86).abs() < f64::EPSILON);
         Ok(())
     }
 
@@ -216,7 +232,7 @@ mod tests {
     fn negative_elevation() -> Result<(), ElevationValueError> {
         let elevation = Elevation::new(-86.0)?;
 
-        assert_eq!(elevation.meters(), -86.0);
+        assert!((elevation.meters() - -86.0).abs() < f64::EPSILON);
         Ok(())
     }
 
@@ -224,7 +240,7 @@ mod tests {
     fn positive_depth() -> Result<(), ElevationValueError> {
         let depth = Depth::new(11_000.0)?;
 
-        assert_eq!(depth.meters(), 11_000.0);
+        assert!((depth.meters() - 11_000.0).abs() < f64::EPSILON);
         Ok(())
     }
 

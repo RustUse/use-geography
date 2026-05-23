@@ -1,8 +1,8 @@
-# use-projection
+# use-geographical-projection
 
 Primitive map projection vocabulary for `RustUse`.
 
-`use-projection` provides descriptive projection names, projection kinds, and
+`use-geographical-projection` provides descriptive projection names, projection kinds, and
 simple projection parameter records without implementing projection math.
 
 ## Non-goals

@@ -19,6 +19,10 @@ name = "use-geographic-region"
 version = "0.1.0"
 
 [[package]]
+name = "use-geographical-projection"
+version = "0.1.0"
+
+[[package]]
 name = "use-geography"
 version = "0.1.0"
 dependencies = [
@@ -26,9 +30,9 @@ dependencies = [
  "use-elevation",
  "use-geo-coordinate",
  "use-geographic-region",
+ "use-geographical-projection",
  "use-map-scale",
  "use-place",
- "use-projection",
  "use-spatial-reference",
 ]
 
@@ -38,10 +42,6 @@ version = "0.1.0"
 
 [[package]]
 name = "use-place"
-version = "0.1.0"
-
-[[package]]
-name = "use-projection"
 version = "0.1.0"
 
 [[package]]

@@ -52,6 +52,11 @@ impl Error for PlaceKindParseError {}
 pub struct PlaceName(String);
 
 impl PlaceName {
+    /// Creates a place name from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`PlaceTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, PlaceTextError> {
         non_empty_text(value).map(Self)
     }
@@ -159,6 +164,11 @@ impl FromStr for PlaceKind {
 pub struct PlaceId(String);
 
 impl PlaceId {
+    /// Creates a place identifier from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`PlaceTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, PlaceTextError> {
         non_empty_text(value).map(Self)
     }

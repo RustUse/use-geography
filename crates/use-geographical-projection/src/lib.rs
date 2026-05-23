@@ -69,6 +69,11 @@ impl Error for ProjectionParameterError {}
 pub struct ProjectionName(String);
 
 impl ProjectionName {
+    /// Creates a projection name from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ProjectionTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, ProjectionTextError> {
         non_empty_text(value).map(Self)
     }
@@ -167,6 +172,12 @@ pub struct ProjectionParameter {
 }
 
 impl ProjectionParameter {
+    /// Creates a projection parameter from non-empty key and value text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ProjectionParameterError::EmptyKey`] when the trimmed key is empty.
+    /// Returns [`ProjectionParameterError::EmptyValue`] when the trimmed value is empty.
     pub fn new(
         key: impl AsRef<str>,
         value: impl AsRef<str>,

@@ -48,6 +48,11 @@ impl Error for SpatialReferenceValueError {}
 pub struct SpatialReferenceId(String);
 
 impl SpatialReferenceId {
+    /// Creates a spatial reference identifier from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`SpatialReferenceTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, SpatialReferenceTextError> {
         non_empty_text(value).map(Self)
     }
@@ -92,7 +97,12 @@ impl FromStr for SpatialReferenceId {
 pub struct EpsgCode(u32);
 
 impl EpsgCode {
-    pub fn new(value: u32) -> Result<Self, SpatialReferenceValueError> {
+    /// Creates an EPSG code from a non-zero integer.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`SpatialReferenceValueError::ZeroEpsgCode`] when `value` is zero.
+    pub const fn new(value: u32) -> Result<Self, SpatialReferenceValueError> {
         if value == 0 {
             return Err(SpatialReferenceValueError::ZeroEpsgCode);
         }

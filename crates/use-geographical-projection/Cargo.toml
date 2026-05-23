@@ -1,5 +1,5 @@
 [package]
-name = "use-projection"
+name = "use-geographical-projection"
 description = "Primitive map projection vocabulary for RustUse"
 publish = true
 version.workspace = true
@@ -10,9 +10,13 @@ repository.workspace = true
 homepage.workspace = true
 readme = "README.md"
 rust-version.workspace = true
-documentation = "https://docs.rs/use-projection"
+documentation = "https://docs.rs/use-geographical-projection"
 keywords = ["projection", "map", "geography", "spatial", "rustuse"]
 categories = ["data-structures", "science"]
+
+[lib]
+name = "use_projection"
+path = "src/lib.rs"
 
 [lints]
 workspace = true

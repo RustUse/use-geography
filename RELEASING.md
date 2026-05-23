@@ -13,7 +13,7 @@ Suggested focused-crate order:
 2. `use-place`
 3. `use-geographic-region`
 4. `use-boundary`
-5. `use-projection`
+5. `use-geographical-projection`
 6. `use-spatial-reference`
 7. `use-elevation`
 8. `use-map-scale`

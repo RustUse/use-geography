@@ -29,7 +29,12 @@ impl Error for MapScaleError {}
 pub struct ScaleRatio(u32);
 
 impl ScaleRatio {
-    pub fn new(denominator: u32) -> Result<Self, MapScaleError> {
+    /// Creates a scale ratio from a positive denominator.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`MapScaleError::ZeroScaleRatio`] when `denominator` is zero.
+    pub const fn new(denominator: u32) -> Result<Self, MapScaleError> {
         if denominator == 0 {
             return Err(MapScaleError::ZeroScaleRatio);
         }
@@ -76,6 +81,12 @@ impl fmt::Display for MapScale {
 pub struct MapResolution(f64);
 
 impl MapResolution {
+    /// Creates a positive map resolution.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`MapScaleError::ResolutionNotFinite`] when the value is not finite.
+    /// Returns [`MapScaleError::ResolutionNotPositive`] when the value is zero or negative.
     pub fn new(units_per_pixel: f64) -> Result<Self, MapScaleError> {
         if !units_per_pixel.is_finite() {
             return Err(MapScaleError::ResolutionNotFinite);
@@ -89,7 +100,7 @@ impl MapResolution {
     }
 
     #[must_use]
-    pub fn units_per_pixel(self) -> f64 {
+    pub const fn units_per_pixel(self) -> f64 {
         self.0
     }
 }
@@ -142,7 +153,7 @@ mod tests {
     fn map_resolution_construction() -> Result<(), MapScaleError> {
         let resolution = MapResolution::new(4.0)?;
 
-        assert_eq!(resolution.units_per_pixel(), 4.0);
+        assert!((resolution.units_per_pixel() - 4.0).abs() < f64::EPSILON);
         Ok(())
     }
 

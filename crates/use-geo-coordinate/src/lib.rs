@@ -8,7 +8,7 @@ fn normalized_token(value: &str) -> String {
     value.trim().to_ascii_lowercase().replace(['_', ' '], "-")
 }
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum GeoCoordinateError {
     LatitudeNotFinite,
     LatitudeOutOfRange,
@@ -37,6 +37,12 @@ impl Error for GeoCoordinateError {}
 pub struct Latitude(f64);
 
 impl Latitude {
+    /// Creates a latitude from decimal degrees.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`GeoCoordinateError::LatitudeNotFinite`] when the value is not finite.
+    /// Returns [`GeoCoordinateError::LatitudeOutOfRange`] when the value is outside `-90.0..=90.0`.
     pub fn new(value: f64) -> Result<Self, GeoCoordinateError> {
         if !value.is_finite() {
             return Err(GeoCoordinateError::LatitudeNotFinite);
@@ -50,7 +56,7 @@ impl Latitude {
     }
 
     #[must_use]
-    pub fn degrees(self) -> f64 {
+    pub const fn degrees(self) -> f64 {
         self.0
     }
 }
@@ -65,6 +71,12 @@ impl fmt::Display for Latitude {
 pub struct Longitude(f64);
 
 impl Longitude {
+    /// Creates a longitude from decimal degrees.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`GeoCoordinateError::LongitudeNotFinite`] when the value is not finite.
+    /// Returns [`GeoCoordinateError::LongitudeOutOfRange`] when the value is outside `-180.0..=180.0`.
     pub fn new(value: f64) -> Result<Self, GeoCoordinateError> {
         if !value.is_finite() {
             return Err(GeoCoordinateError::LongitudeNotFinite);
@@ -78,7 +90,7 @@ impl Longitude {
     }
 
     #[must_use]
-    pub fn degrees(self) -> f64 {
+    pub const fn degrees(self) -> f64 {
         self.0
     }
 }
@@ -223,7 +235,7 @@ mod tests {
     fn valid_latitude() -> Result<(), GeoCoordinateError> {
         let latitude = Latitude::new(37.7749)?;
 
-        assert_eq!(latitude.degrees(), 37.7749);
+        assert!((latitude.degrees() - 37.7749).abs() < f64::EPSILON);
         Ok(())
     }
 
@@ -239,7 +251,7 @@ mod tests {
     fn valid_longitude() -> Result<(), GeoCoordinateError> {
         let longitude = Longitude::new(-122.4194)?;
 
-        assert_eq!(longitude.degrees(), -122.4194);
+        assert!((longitude.degrees() - -122.4194).abs() < f64::EPSILON);
         Ok(())
     }
 

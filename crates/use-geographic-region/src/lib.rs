@@ -52,6 +52,11 @@ impl Error for GeographicRegionKindParseError {}
 pub struct GeographicRegionName(String);
 
 impl GeographicRegionName {
+    /// Creates a geographic region name from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`GeographicRegionTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, GeographicRegionTextError> {
         non_empty_text(value).map(Self)
     }
@@ -153,6 +158,11 @@ impl FromStr for GeographicRegionKind {
 pub struct GeographicRegionId(String);
 
 impl GeographicRegionId {
+    /// Creates a geographic region identifier from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`GeographicRegionTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, GeographicRegionTextError> {
         non_empty_text(value).map(Self)
     }

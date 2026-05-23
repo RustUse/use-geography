@@ -18,7 +18,7 @@ small, explicit, and independently useful.
 - `use-place`: descriptive place names, kinds, and identifiers
 - `use-geographic-region`: descriptive geographic region names, kinds, and identifiers
 - `use-boundary`: descriptive boundary names, kinds, and statuses
-- `use-projection`: descriptive map projection names, kinds, and parameters
+- `use-geographical-projection`: descriptive map projection names, kinds, and parameters
 - `use-spatial-reference`: descriptive spatial reference identifiers and EPSG codes
 - `use-elevation`: elevation, depth, datum, and vertical-reference vocabulary
 - `use-map-scale`: descriptive map scale, resolution, and zoom vocabulary

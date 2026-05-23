@@ -52,6 +52,11 @@ impl Error for BoundaryParseError {}
 pub struct BoundaryName(String);
 
 impl BoundaryName {
+    /// Creates a boundary name from non-empty text.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`BoundaryTextError::Empty`] when the trimmed value is empty.
     pub fn new(value: impl AsRef<str>) -> Result<Self, BoundaryTextError> {
         non_empty_text(value).map(Self)
     }

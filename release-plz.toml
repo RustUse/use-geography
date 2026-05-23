@@ -26,7 +26,7 @@ release = true
 version_group = "rustuse-geography"
 
 [[package]]
-name = "use-projection"
+name = "use-geographical-projection"
 release = true
 version_group = "rustuse-geography"
 
@@ -56,7 +56,7 @@ changelog_include = [
     "use-place",
     "use-geographic-region",
     "use-boundary",
-    "use-projection",
+    "use-geographical-projection",
     "use-spatial-reference",
     "use-elevation",
     "use-map-scale",
