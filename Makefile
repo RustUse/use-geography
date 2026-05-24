@@ -1,6 +1,6 @@
 .PHONY: help fmt check lint test test-minimal build doc examples audit deny sbom publish-dry-run-focused publish-dry-run-facade release-readiness facade-post-publish-validation verify
 
-FOCUSED_CRATES := use-geo-coordinate use-place use-geographic-region use-boundary use-geographical-projection use-spatial-reference use-elevation use-map-scale
+FOCUSED_CRATES := use-geo-coordinate use-place use-address use-geographic-region use-boundary use-geographical-projection use-spatial-reference use-elevation use-map-scale
 FACADE_CRATE := use-geography
 
 help:

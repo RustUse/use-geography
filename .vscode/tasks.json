@@ -131,7 +131,7 @@
             "command": "bash",
             "args": [
                 "-lc",
-                "crates=\"use-geo-coordinate use-place use-geographic-region use-boundary use-geographical-projection use-spatial-reference use-elevation use-map-scale\"; if [ -z \"$crates\" ]; then echo \"No focused crates configured\"; exit 0; fi; set -euo pipefail; for crate in $crates; do cargo package --list -p \"$crate\"; cargo publish --dry-run --allow-dirty -p \"$crate\"; done"
+                "crates=\"use-geo-coordinate use-place use-address use-geographic-region use-boundary use-geographical-projection use-spatial-reference use-elevation use-map-scale\"; if [ -z \"$crates\" ]; then echo \"No focused crates configured\"; exit 0; fi; set -euo pipefail; for crate in $crates; do cargo package --list -p \"$crate\"; cargo publish --dry-run --allow-dirty -p \"$crate\"; done"
             ],
             "windows": {
                 "command": "powershell",
@@ -140,7 +140,7 @@
                     "-ExecutionPolicy",
                     "Bypass",
                     "-Command",
-                    "$ErrorActionPreference = 'Stop'; $crates = @('use-geo-coordinate','use-place','use-geographic-region','use-boundary','use-geographical-projection','use-spatial-reference','use-elevation','use-map-scale'); foreach ($crate in $crates) { cargo package --list -p $crate; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; cargo publish --dry-run --allow-dirty -p $crate; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE } }"
+                    "$ErrorActionPreference = 'Stop'; $crates = @('use-geo-coordinate','use-place','use-address','use-geographic-region','use-boundary','use-geographical-projection','use-spatial-reference','use-elevation','use-map-scale'); foreach ($crate in $crates) { cargo package --list -p $crate; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; cargo publish --dry-run --allow-dirty -p $crate; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE } }"
                 ]
             },
             "problemMatcher": []

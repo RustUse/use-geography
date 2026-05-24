@@ -15,6 +15,7 @@ keywords = ["geography", "coordinate", "map", "spatial-reference", "rustuse"]
 categories = ["data-structures", "science"]
 
 [dependencies]
+use-address.workspace = true
 use-boundary.workspace = true
 use-elevation.workspace = true
 use-geo-coordinate.workspace = true

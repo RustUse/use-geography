@@ -3,6 +3,10 @@
 version = 4
 
 [[package]]
+name = "use-address"
+version = "0.1.0"
+
+[[package]]
 name = "use-boundary"
 version = "0.1.0"
 
@@ -26,6 +30,7 @@ version = "0.1.0"
 name = "use-geography"
 version = "0.1.0"
 dependencies = [
+ "use-address",
  "use-boundary",
  "use-elevation",
  "use-geo-coordinate",

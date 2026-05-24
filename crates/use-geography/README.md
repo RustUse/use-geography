@@ -4,13 +4,12 @@ Facade crate for `RustUse` geography primitives.
 
 `use-geography` reexports focused child crates for descriptive Earth-oriented
 vocabulary. It is not a GIS engine, mapping framework, geocoder, routing engine,
-map renderer, spatial database, or projection engine.
+map renderer, spatial database, projection engine, or address parser.
 
 ## Scope
 
 - thin facade over focused geography child crates
-- descriptive geographic coordinates, places, regions, boundaries, projections,
-  spatial references, elevation, and map scale
+- descriptive geographic coordinates, places, regions, boundaries, projections, spatial references, elevation, address components, and map scale
 - composition-friendly exports for downstream crates
 
 ## Non-goals
@@ -19,6 +18,7 @@ map renderer, spatial database, or projection engine.
 - projection math
 - coordinate transformation
 - geocoding or reverse geocoding
+- address parsing or postal-service validation
 - routing or route planning
 - map rendering or tile behavior
 - network access or data fetching
@@ -28,7 +28,7 @@ map renderer, spatial database, or projection engine.
 ```rust
 use use_geography::{
 	boundary, elevation, geo_coordinate, geographic_region, map_scale, place, projection,
-	spatial_reference,
+	spatial_reference, Address, AddressCountryCode, AddressLine,
 };
 
 # fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -43,6 +43,11 @@ let projection_kind = projection::ProjectionKind::WebMercator;
 let epsg = spatial_reference::EpsgCode::new(4326)?;
 let elevation = elevation::Elevation::new(16.0)?;
 let scale = map_scale::MapScale::new(map_scale::ScaleRatio::new(25_000)?);
+let address = Address::new().with_line(AddressLine::new("1 Rue de Rivoli")?);
+let address = Address {
+	country_code: Some(AddressCountryCode::new("fr")?),
+	..address
+};
 
 assert_eq!(coordinate.latitude(), latitude);
 assert_eq!(coordinate.longitude(), longitude);
@@ -53,6 +58,7 @@ assert_eq!(projection_kind.to_string(), "web-mercator");
 assert_eq!(epsg.to_string(), "EPSG:4326");
 assert_eq!(elevation.meters(), 16.0);
 assert_eq!(scale.to_string(), "1:25000");
+assert!(address.has_country());
 # Ok(())
 # }
 ```

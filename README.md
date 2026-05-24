@@ -4,8 +4,8 @@
 
 `use-geography` is a primitive geography vocabulary set for `RustUse`.
 It describes geographic coordinates, places, geographic regions, boundaries,
-projections, spatial references, elevation, and map scale as small, composable
-Rust value types.
+projections, spatial references, elevation, address components, and map scale
+as small, composable Rust value types.
 
 The root `use-geography` crate is a facade crate only. Most implementation
 belongs in focused child crates under `crates/`, where the vocabulary stays
@@ -16,6 +16,7 @@ small, explicit, and independently useful.
 - `use-geography`: thin facade crate that reexports the focused geography crates
 - `use-geo-coordinate`: geographic coordinate primitives such as latitude and longitude
 - `use-place`: descriptive place names, kinds, and identifiers
+- `use-address`: descriptive address lines, street parts, postal codes, and address metadata
 - `use-geographic-region`: descriptive geographic region names, kinds, and identifiers
 - `use-boundary`: descriptive boundary names, kinds, and statuses
 - `use-geographical-projection`: descriptive map projection names, kinds, and parameters
@@ -50,7 +51,7 @@ crates can compose into larger systems.
 Common adjacent sets include:
 
 - `use-geometry` for abstract geometry such as points, lines, polygons, and shapes
-- `use-locale` for locale-oriented region and country-code concepts
+- `use-locale` for locale identifiers and broader formatting context around region and country concepts
 - `use-data` for generic data modeling helpers
 - `use-validate` for broader validation layers in application code
 - `use-units` for standalone unit vocabulary

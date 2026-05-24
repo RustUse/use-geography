@@ -1,6 +1,7 @@
 #![forbid(unsafe_code)]
 #![doc = include_str!("../README.md")]
 
+pub use use_address::*;
 pub use use_boundary as boundary;
 pub use use_elevation as elevation;
 pub use use_geo_coordinate as geo_coordinate;
@@ -13,8 +14,8 @@ pub use use_spatial_reference as spatial_reference;
 #[cfg(test)]
 mod tests {
     use super::{
-        boundary, elevation, geo_coordinate, geographic_region, map_scale, place, projection,
-        spatial_reference,
+        Address, AddressCountryCode, AddressLine, boundary, elevation, geo_coordinate,
+        geographic_region, map_scale, place, projection, spatial_reference,
     };
 
     #[test]
@@ -41,6 +42,26 @@ mod tests {
         assert_eq!(epsg.to_string(), "EPSG:4326");
         assert!((height.meters() - 35.0).abs() < f64::EPSILON);
         assert_eq!(scale.to_string(), "1:10000");
+        Ok(())
+    }
+
+    #[test]
+    fn facade_reexports_address_primitives() -> Result<(), Box<dyn std::error::Error>> {
+        let address = Address::new().with_line(AddressLine::new("123 Main St")?);
+        let address = Address {
+            country_code: Some(AddressCountryCode::new("us")?),
+            ..address
+        };
+
+        assert!(!address.is_empty());
+        assert!(address.has_country());
+        assert_eq!(
+            address
+                .country_code
+                .as_ref()
+                .map(AddressCountryCode::as_str),
+            Some("US")
+        );
         Ok(())
     }
 }

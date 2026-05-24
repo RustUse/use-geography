@@ -11,10 +11,11 @@ Suggested focused-crate order:
 
 1. `use-geo-coordinate`
 2. `use-place`
-3. `use-geographic-region`
-4. `use-boundary`
-5. `use-geographical-projection`
-6. `use-spatial-reference`
-7. `use-elevation`
-8. `use-map-scale`
-9. `use-geography`
+3. `use-address`
+4. `use-geographic-region`
+5. `use-boundary`
+6. `use-geographical-projection`
+7. `use-spatial-reference`
+8. `use-elevation`
+9. `use-map-scale`
+10. `use-geography`

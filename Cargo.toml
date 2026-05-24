@@ -3,6 +3,7 @@ members = [
     "crates/use-geography",
     "crates/use-geo-coordinate",
     "crates/use-place",
+    "crates/use-address",
     "crates/use-geographic-region",
     "crates/use-boundary",
     "crates/use-geographical-projection",
@@ -24,6 +25,7 @@ rust-version = "1.95.0"
 version = "0.1.0"
 
 [workspace.dependencies]
+use-address = { version = "0.1.0", path = "crates/use-address" }
 use-boundary = { version = "0.1.0", path = "crates/use-boundary" }
 use-elevation = { version = "0.1.0", path = "crates/use-elevation" }
 use-geo-coordinate = { version = "0.1.0", path = "crates/use-geo-coordinate" }
@@ -43,6 +45,7 @@ versioning = "lockstep-0.x"
 first-publish-candidates = [
     "use-geo-coordinate",
     "use-place",
+    "use-address",
     "use-geographic-region",
     "use-boundary",
     "use-geographical-projection",

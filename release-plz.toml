@@ -16,6 +16,11 @@ release = true
 version_group = "rustuse-geography"
 
 [[package]]
+name = "use-address"
+release = true
+version_group = "rustuse-geography"
+
+[[package]]
 name = "use-geographic-region"
 release = true
 version_group = "rustuse-geography"
@@ -52,14 +57,15 @@ version_group = "rustuse-geography"
 changelog_update = true
 changelog_path = "./CHANGELOG.md"
 changelog_include = [
-    "use-geo-coordinate",
-    "use-place",
-    "use-geographic-region",
-    "use-boundary",
-    "use-geographical-projection",
-    "use-spatial-reference",
-    "use-elevation",
-    "use-map-scale",
+  "use-geo-coordinate",
+  "use-place",
+  "use-address",
+  "use-geographic-region",
+  "use-boundary",
+  "use-geographical-projection",
+  "use-spatial-reference",
+  "use-elevation",
+  "use-map-scale",
 ]
 
 [changelog]
