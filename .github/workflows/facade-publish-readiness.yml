@@ -21,7 +21,7 @@ jobs:
         use-geo-coordinate use-place use-address use-geographic-region use-boundary use-geographical-projection use-spatial-reference use-elevation use-map-scale
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install stable Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
