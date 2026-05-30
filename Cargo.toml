@@ -22,19 +22,19 @@ publish = false
 readme = "README.md"
 repository = "https://github.com/RustUse/use-geography"
 rust-version = "1.95.0"
-version = "0.1.0"
+version = "0.1.1"
 
 [workspace.dependencies]
-use-address = { version = "0.1.0", path = "crates/use-address" }
-use-boundary = { version = "0.1.0", path = "crates/use-boundary" }
-use-elevation = { version = "0.1.0", path = "crates/use-elevation" }
-use-geo-coordinate = { version = "0.1.0", path = "crates/use-geo-coordinate" }
-use-geographic-region = { version = "0.1.0", path = "crates/use-geographic-region" }
-use-geography = { version = "0.1.0", path = "crates/use-geography" }
-use-map-scale = { version = "0.1.0", path = "crates/use-map-scale" }
-use-place = { version = "0.1.0", path = "crates/use-place" }
-use-projection = { package = "use-geographical-projection", version = "0.1.0", path = "crates/use-geographical-projection" }
-use-spatial-reference = { version = "0.1.0", path = "crates/use-spatial-reference" }
+use-address = { version = "0.1.1", path = "crates/use-address" }
+use-boundary = { version = "0.1.1", path = "crates/use-boundary" }
+use-elevation = { version = "0.1.1", path = "crates/use-elevation" }
+use-geo-coordinate = { version = "0.1.1", path = "crates/use-geo-coordinate" }
+use-geographic-region = { version = "0.1.1", path = "crates/use-geographic-region" }
+use-geography = { version = "0.1.1", path = "crates/use-geography" }
+use-map-scale = { version = "0.1.1", path = "crates/use-map-scale" }
+use-place = { version = "0.1.1", path = "crates/use-place" }
+use-projection = { package = "use-geographical-projection", version = "0.1.1", path = "crates/use-geographical-projection" }
+use-spatial-reference = { version = "0.1.1", path = "crates/use-spatial-reference" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
