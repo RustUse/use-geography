@@ -41,7 +41,7 @@ macro_rules! impl_trimmed_text_type {
             ///
             /// # Errors
             ///
-            /// Returns [`Self::Error::Empty`] when the trimmed value is empty.
+            #[doc = concat!("Returns [`", stringify!($error_name), "::Empty`] when the trimmed value is empty.")]
             pub fn new(value: impl AsRef<str>) -> Result<Self, $error_name> {
                 trimmed_non_empty(value).ok_or($error_name::Empty).map(Self)
             }
